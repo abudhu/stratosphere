@@ -1,0 +1,8 @@
+---
+  Instances:
+    1:
+      - InstanceType: "t2.small"
+      - ImageId: "ami-231223"
+    2:
+      - InstanceType: "m4.medium"
+      - ImageId: "ami-092186"

@@ -1,0 +1,57 @@
+---
+AWSTemplateFormatVersion: "2010-09-09"
+Parameters:
+  paramAmiID:
+    Type: String
+    Default: ami-09211986
+    AllowedValues:
+      - hi
+      - boo
+    AllowedPatern: poop
+    Description: Bad Desc
+    NoEcho: false
+  paramInstanceType:
+    Type: String
+    Default: m4.large
+  paramVPCCidr:
+    Type: String
+    Default: 10.10.0.0/16
+  paramPublicSubnet:
+    Type: String
+    Default: yes
+    AllowedValues:
+      - yes
+      - no
+Metadata:
+  AWS::CloudFormation::Interface:
+    ParameterGroups:
+      - Label:
+          default: What are we deploying?
+        Parameters:
+          - paramEnviornment
+      - Label:
+          default: Networking
+        Parameters:
+          - VPCCidr
+      - Label:
+          default: Bastion Configuration
+        Parameters:
+          - InstanceType
+          - AmiID
+    ParameterLabels:
+      VpcCidr:
+        default: "VPC Cidr"
+      InstanceType:
+        default: "Bastion Instance Size"
+      AmiID:
+        default: "Bastion AMI"
+Mappings:
+  mapEnviornmentValues:
+    Development:
+      VPC: vpc-id091986
+      privatesubnet: subnet-092130
+  mapSubnet:
+    public-a:
+      octet: 10.0/24
+    public-b:
+      octet: 30.0/24
